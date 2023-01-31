@@ -1,9 +1,3 @@
-<form method="post">
-  <label for="ip_address">Enter IP address to block:</label><br>
-  <input type="text" id="ip_address" name="ip_address"><br>
-  <input type="submit" value="Block IP and hostname">
-</form>
-
 <?php
 if (isset($_POST['ip_address']) && !empty($_POST['ip_address'])) {
   $ip_address = $_POST['ip_address'];
@@ -38,21 +32,45 @@ if (!empty($hostname)) {
 
   echo "IP address $ip_address and hostname $hostname have been blocked.";
 }
-<!-- Default Statcounter code for bluebrad.net
-http://bluebrad.net -->
-<script type="text/javascript">
-var sc_project=10142707; 
-var sc_invisible=1; 
-var sc_security="e1f9cefd"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics
-Made Easy - Statcounter" href="https://statcounter.com/"
-target="_blank"><img class="statcounter"
-src="https://c.statcounter.com/10142707/0/e1f9cefd/1/"
-alt="Web Analytics Made Easy - Statcounter"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
 ?>
+<html>
+  <head>
+    <title>Deny access to this site</title>
+    <style>
+      body {
+        background-color: #224488;
+        text-align: center;
+		color:White;
+		text-size:14px;
+      }
+      p{color:white;}
+      form{
+        width: 50%;
+        margin: auto;
+        text-align: center;
+      }
+      input{
+        color:black;
+        background: white;
+        border-radius:3px;
+		  width:400px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size:20px;
+  Font-style:bold;
+      }
+      h1 {color: navy;}
+      label{color:white;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <form method="post">
+        <label for="ip_address">Enter IP address to block:</label><br>
+        <input type="text" id="ip_address" name="ip_address"><br>
+        <input type="submit" value="Block IP and hostname">
+      </form>
+    </div>
+  </body>
+</html>
