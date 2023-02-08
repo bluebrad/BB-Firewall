@@ -1,8 +1,9 @@
 # BB-Firewall
 
-I put this htaccess and deny.php scripts together to make it simple to deny a user access to the website you are hosting. This script will allow you to quickly entern and ip4 or ip6 address and it will automaticly add the domain with it. 
+I created these htaccess and deny.php scripts to easily block access to your website. The script allows you to quickly enter an IPv4 or IPv6 address and automatically adds the domain associated with it.
+
+Please download and unpack this in the public folder of your website's root directory. Remember to back up your current .htaccess file. Then navigate to yourdomain.com/deny.php and add the IP address you wish to block from accessing your website. Once they are on the deny list, they will no longer be able to view your website and will be redirected to your Deny blackhole.
+
 ![image](https://user-images.githubusercontent.com/6026548/215838832-2dc44486-d9d8-45c3-97ce-8528dbaca7f3.png)
 
-I am working on adding a filter to find duplicates also. 
-
-Great to use with wordpress or opencart. 
+Great to use with wordpress or opencart or any other PHP systems. 
