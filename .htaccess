@@ -29,7 +29,7 @@ RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 # Redirects! 
 redirect /index.php?route=account/loginUpon /index.php?route=account/login
 redirect /administrator /admin
-resirect /blackhole https://bluebrad.net/blackhole/
+redirect /blackhole https://bluebrad.net/blackhole/
 
 
 Options +SymLinksIfOwnerMatch
