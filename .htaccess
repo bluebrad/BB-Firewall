@@ -39,15 +39,45 @@ Options -Indexes
 <FilesMatch "(?i)((\.tpl|.twig|\.ini|\.log|(?<!robots)\.txt))">
  Require all denied
 </FilesMatch>
-
-SetEnvIf CF-IPCountry DE BuzzOff=1
-SetEnvIf CF-IPCountry RU BuzzOff=1
-SetEnvIf CF-IPCountry CN BuzzOff=1
-SetEnvIf CF-IPCountry IN BuzzOff=1
-SetEnvIf CF-IPCountry FR BuzzOff=1
-SetEnvIf CF-IPCountry GR BuzzOff=1
-
+## COUNTRY BLOCK ##
+###################
+Header set CF-IPCountry-Test "%{HTTP:CF-IPCountry}e"
+#  United States
+# Allow only the United States (US) or change to your country
+<RequireAny>
+    Require expr %{HTTP:CF-IPCountry} == 'US'
+</RequireAny>
 <RequireAll>
-Require not host a1.by .telecom.by telecom\.by rapidseedbox\.com softvideo\.ru allround\.net leaseweb\.com scorpiondata\.com had\.pm uni-saarland\.de hosted-by-vdsina\.ru petalsearch\.com nothingtohide\.nl
-Require all granted
+    Require expr %{HTTP:CF-IPCountry} != 'KR'
+	Require expr %{HTTP:CF-IPCountry} != 'UK'
+	Require expr %{HTTP:CF-IPCountry} != 'GB'
+	Require expr %{HTTP:CF-IPCountry} != 'CN'
+	Require expr %{HTTP:CF-IPCountry} != 'RU'
+	Require expr %{HTTP:CF-IPCountry} != 'IN'
+	Require expr %{HTTP:CF-IPCountry} != 'IT'
+	Require expr %{HTTP:CF-IPCountry} != 'TH'
+	Require expr %{HTTP:CF-IPCountry} != 'TR'
+	Require expr %{HTTP:CF-IPCountry} != 'NL'
+	Require expr %{HTTP:CF-IPCountry} != 'UA'
+	Require expr %{HTTP:CF-IPCountry} != 'DE'
+	Require expr %{HTTP:CF-IPCountry} != 'BR'
+	Require expr %{HTTP:CF-IPCountry} != 'ES'
+	Require expr %{HTTP:CF-IPCountry} != 'BY'
+	Require expr %{HTTP:CF-IPCountry} != 'CZ'
+	Require expr %{HTTP:CF-IPCountry} != 'EU'
 </RequireAll>
+###################
+## BLOCK THE IP OR HOST - THIS WILL UPDATE WITH THE DENY.PHP ##
+<RequireAll>
+Require not ip 176.227.215.131
+Require not host scan03.fgxintel.com
+Require not host orowave.com
+Require not ip 84.17.43.195
+Require not host unn-84-17-43-195.cdn77.com
+Require not host ^.*\.cdn77\.com$
+Require not ip  51.77.214.27
+Require not ip 51.77.214.27
+Require not host ^.*\.eu$
+#Require all granted
+</RequireAll>
+###################
