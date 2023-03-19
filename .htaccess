@@ -39,8 +39,8 @@ Options -Indexes
 <FilesMatch "(?i)((\.tpl|.twig|\.ini|\.log|(?<!robots)\.txt))">
  Require all denied
 </FilesMatch>
-## COUNTRY BLOCK ##
-###################
+
+## BLOCK ##
 Header set CF-IPCountry-Test "%{HTTP:CF-IPCountry}e"
 #  United States
 # Allow only the United States (US) or change to your country
@@ -48,6 +48,7 @@ Header set CF-IPCountry-Test "%{HTTP:CF-IPCountry}e"
     Require expr %{HTTP:CF-IPCountry} == 'US'
 </RequireAny>
 <RequireAll>
+###################
     Require expr %{HTTP:CF-IPCountry} != 'KR'
 	Require expr %{HTTP:CF-IPCountry} != 'UK'
 	Require expr %{HTTP:CF-IPCountry} != 'GB'
@@ -65,18 +66,15 @@ Header set CF-IPCountry-Test "%{HTTP:CF-IPCountry}e"
 	Require expr %{HTTP:CF-IPCountry} != 'BY'
 	Require expr %{HTTP:CF-IPCountry} != 'CZ'
 	Require expr %{HTTP:CF-IPCountry} != 'EU'
-</RequireAll>
-###################
 ## BLOCK THE IP OR HOST - THIS WILL UPDATE WITH THE DENY.PHP ##
-<RequireAll>
-Require not ip 176.227.215.131
-Require not host scan03.fgxintel.com
-Require not host orowave.com
-Require not ip 84.17.43.195
-Require not host unn-84-17-43-195.cdn77.com
-Require not host ^.*\.cdn77\.com$
-Require not ip  51.77.214.27
-Require not ip 51.77.214.27
-Require not host ^.*\.eu$
+	Require not ip 176.227.215.131
+	Require not host scan03.fgxintel.com
+	Require not host orowave.com
+	Require not ip 84.17.43.195
+	Require not host unn-84-17-43-195.cdn77.com
+	Require not host ^.*\.cdn77\.com$
+	Require not ip  51.77.214.27
+	Require not ip 51.77.214.27
+	Require not host ^.*\.eu$
 </RequireAll>
 ###################
