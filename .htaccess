@@ -78,6 +78,5 @@ Require not host ^.*\.cdn77\.com$
 Require not ip  51.77.214.27
 Require not ip 51.77.214.27
 Require not host ^.*\.eu$
-#Require all granted
 </RequireAll>
 ###################
