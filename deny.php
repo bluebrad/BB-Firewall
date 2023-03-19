@@ -15,9 +15,9 @@ if (isset($_POST['ip_address']) && !empty($_POST['ip_address'])) {
   if (strpos($htaccess_contents, "Require not ip $ip_address") === false) {
     // Insert "Require not ip $ip_address" and "Require not host $hostname" directives before "Require all granted"
     if (!empty($hostname)) {
-      $htaccess_contents = str_replace('Require all granted', "Require not ip $ip_address\nRequire not host $hostname\nRequire all granted", $htaccess_contents);
+      $htaccess_contents = str_replace('</RequireAll>', "Require not ip $ip_address\nRequire not host $hostname\n</RequireAll>", $htaccess_contents);
     } else {
-      $htaccess_contents = str_replace('Require all granted', "Require not ip $ip_address\nRequire all granted", $htaccess_contents);
+      $htaccess_contents = str_replace('</RequireAll>', "Require not ip $ip_address\n</RequireAll>", $htaccess_contents);
     }
     // Open .htaccess file in write mode
     $htaccess_file = fopen('.htaccess', 'w');
