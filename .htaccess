@@ -2,8 +2,11 @@
 RewriteEngine On
 RewriteCond %{HTTPS} off 
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-ErrorDocument 403 https://bluebrad.net/denied
+ErrorDocument 403 https://bluebrad.net/denied?=yourdomain
 #ErrorDocument 404 /404/
+
+# alowse you to just use /deny skipping php or change the deny to what every you wish
+RewriteRule ^deny$ /deny.php [L]
 
 #if wordpress is used
 <IfModule mod_rewrite.c>
